@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <style>
+    body{
+        background-color: black;
+    }
+    header{
+        min-height: 300px;
+        min-width: 1200px;
+        /* background-color: white; */
+        margin: 100px auto;
+    }
+    .a{
+        height:250px;
+        width: 250px;
+        border: 15px solid yellow;
+        float: left;
+        box-sizing: border-box;
+        margin: 25px;
+        box-shadow: 0px 0px 25px 3px yellow inset;
+        border-radius: 10px;
+        color: yellow;
+        font-size: 100px;
+        text-align: center;
+        padding-top: 25px; 
+    }
+    p{
+       font-size: 25px;
+    }
+ </style>
+</head>
+<body>
+    <header>
+        <div class="a">
+            <b id="p">HH</b>
+            <p>HOURS</p>
+        </div>
+        <div class="a">
+            <b id="q">MM</b>
+            <p>MINUTES</p>
+        </div>
+        <div class="a">
+            <b id="r">SS</b>
+            <p>SECONDS</p>
+        </div>
+        <div class="a">
+            <b id="s">MS</b>
+            <p>ML SECOND</p>
+        </div>
+    </header>
+    <center>
+        <input type="button" onclick="demo1(this)" value="START">
+    </center>
+ <script>
+        var hh = document.querySelector("#p")
+        var mm = document.querySelector("#q")
+        var ss = document.querySelector("#r")
+        var mls = document.querySelector("#s")
+  var h = 0;
+  var m = 0;
+  var s = 0;
+  var ms= 0;
+    function demo(){
+        hh.innerText = h;
+        mm.innerText = m;
+        ss.innerText = s;
+        mls.innerText = ms;
+        ms++;
+        
+        if(ms==1000){
+            ms=0;
+            s++;
+            if(s==60){
+                s=0;
+                m++;
+                if(m==60){
+                    m=0;
+                    h++;
+                }
+            }
+        }
+        
+        if(h<10){
+            hh.innerText="0"+h;
+        }
+        else{
+            hh.innerText = h;
+        }
+        if(m<10){
+            mm.innerText='0'+m
+        }
+        else{
+            mm.innerText=m;
+        }
+        if(s<10){
+            ss.innerText='0'+s
+        }
+        else{
+            ss.innerText=s;
+        }
+        if(ms<10){
+            mls.innerText='00'+ms
+        }
+        else{
+            mls.innerText=ms;
+        }
+}
+        
+    function demo1(x){
+       if(x.value=='START'){
+        x.value ='STOP';
+        x.style.background='green'
+        x.style.color='white'
+        x.style.padding='10px'
+        a=setInterval(demo, 1)
+       }
+       else{
+        x.value='START'
+         x.style.background = 'red'
+           x.style.color = 'white'
+           x.style.padding = '10px'
+           clearInterval(a)
+       }
+    }     
+ </script>
+</body>
+</html>
